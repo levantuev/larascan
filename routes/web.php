@@ -17,6 +17,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/contact', function () {
+Route::get('/contact/submit', function () {
     return "Super";
 })->name('contact');
