@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +14,20 @@ use App\Http\Controllers\ContactController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('home');
+})->name('home');
 
-Route::get('/contact/submit', function () {
-    return "Super";
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+
+Route::get('/contact', function () {
+    return view('contact');
 })->name('contact');
+
+use App\Http\Controllers\ContactController;
+Route::post('/contact/submit', [ ContactController::class, 'submit' ])->name('contact-form');
+
+/* Это многострочный комментарий
+Route::post('/contact/submit', 'ContactController@submit')->name('contact-form');
+*/
